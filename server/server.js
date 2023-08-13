@@ -1,7 +1,12 @@
 const express = require('express');
 const path = require('path');
+const { ApolloServer } = require('apollo-server-express'); // Import ApolloServer
 const db = require('./config/connection');
 const routes = require('./routes');
+
+// Import your GraphQL schema and resolvers
+const typeDefs = require('./schemas');
+const resolvers = require('./resolvers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -16,6 +21,24 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(routes);
 
+// Create an instance of Apollo Server and apply it as middleware
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+server.applyMiddleware({ app });
+
 db.once('open', () => {
   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
 });
+
+// Key changes:
+
+// Import ApolloServer from apollo-server-express.
+// Import your GraphQL schema (typeDefs) and resolvers (resolvers).
+// Create an instance of ApolloServer with the typeDefs and resolvers you've defined.
+// Apply the Apollo Server instance as middleware using server.applyMiddleware({ app }).
+// With these changes, your Express server will now have the Apollo Server middleware integrated. 
+// This will allow you to handle GraphQL queries and mutations in addition to your existing routes.
+// Make sure that your typeDefs and resolvers are properly defined and imported from their respective files.
