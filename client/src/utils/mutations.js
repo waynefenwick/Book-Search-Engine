@@ -85,3 +85,13 @@ export const REMOVE_BOOK = gql`
     }
   }
 `;
+
+// NOTE:
+// Just to recap:
+
+// LOGIN_USER mutation is for logging in a user and retrieves a token and user data.
+// ADD_USER mutation is for adding a new user and retrieves a token and user data.
+// SAVE_BOOK mutation is for saving a book and retrieves user data with updated saved books.
+// REMOVE_BOOK mutation is for removing a book and retrieves user data with updated saved books.
+// Your mutations request the necessary data you need from the server, including user details,
+// saved books, and relevant book information.
