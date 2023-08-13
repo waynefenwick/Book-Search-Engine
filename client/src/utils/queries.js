@@ -7,6 +7,14 @@ export const GET_ME = gql`
           _id
           username
           email
-     }
+          }
      }
 `;
+
+// NOTE
+// This query requests the same fields that your back-end me query returns.
+// You can include additional fields in this query if your back-end me query returns more information.
+
+// You can then use this GET_ME query in your React components to fetch user data from your GraphQL
+// API using Apollo Client.
+// Just remember to import the query and use the useQuery hook to retrieve and work with the data.
