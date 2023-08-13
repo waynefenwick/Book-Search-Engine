@@ -5,8 +5,8 @@ const db = require('./config/connection');
 const routes = require('./routes');
 
 // Import your GraphQL schema and resolvers
-const typeDefs = require('./schemas');
-const resolvers = require('./resolvers');
+const typeDefs = require('./schemas/typeDefs');
+const resolvers = require('./schemas/resolvers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -21,17 +21,24 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(routes);
 
-// Create an instance of Apollo Server and apply it as middleware
+// Create an instance of Apollo Server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
 
-server.applyMiddleware({ app });
+// Await the start of Apollo Server before applying middleware
+async function startServer() {
+  await server.start();
+  server.applyMiddleware({ app });
+}
+
+startServer();
 
 db.once('open', () => {
   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
 });
+
 
 // Key changes:
 
