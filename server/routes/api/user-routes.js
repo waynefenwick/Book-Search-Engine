@@ -10,13 +10,20 @@ const {
 // import middleware
 const { authMiddleware } = require('../../utils/auth');
 
-// put authMiddleware anywhere we need to send a token for verification of user
-router.route('/').post(createUser).put(authMiddleware, saveBook);
+// Route to create a new user
+router.route('/signup').post(createUser);
 
+// Route to log in a user
 router.route('/login').post(login);
 
+// Route to get the logged-in user's information
 router.route('/me').get(authMiddleware, getSingleUser);
 
+// Route to save a book to a user's profile
+router.route('/books').put(authMiddleware, saveBook);
+
+// Route to remove a book from a user's profile
 router.route('/books/:bookId').delete(authMiddleware, deleteBook);
 
 module.exports = router;
+

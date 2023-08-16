@@ -28,13 +28,19 @@ const SignupForm = () => {
     }
 
     try {
+      console.log('Sending signup request to server...');
+
       const { data } = await addUser({
         variables: userFormData, // Pass the userFormData to the mutation
       });
 
+      console.log('Status?');
+      console.log(data); // Log the response data
+      console.log(error); // Log the error object if present
+
       Auth.login(data.addUser.token);
     } catch (err) {
-      console.error(err);
+      console.error('Signup error:', err);
       setShowAlert(true);
     }
 

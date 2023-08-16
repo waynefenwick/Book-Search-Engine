@@ -1,22 +1,19 @@
-const jwt = require('jsonwebtoken');
-
-const secret = 'mysecretsshhhhh';
-const expiration = '2h';
-
 module.exports = {
   authMiddleware: function (context) {
     const authHeader = context.req.headers.authorization;
 
     if (!authHeader) {
+      console.log('No authorization header found');
       return context;
     }
 
     try {
       const token = authHeader.split(' ')[1];
       const decodedToken = jwt.verify(token, secret);
+      console.log('Decoded token:', decodedToken);
       context.user = decodedToken.data;
     } catch (error) {
-      console.log('Invalid token');
+      console.log('Invalid token:', error);
     }
 
     return context;
