@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { useMutation } from '@apollo/client'; // Import the useMutation hook
-
+import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations'; // Import the ADD_USER mutation
 
@@ -11,7 +10,7 @@ const SignupForm = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   // Use the useMutation hook for ADD_USER
-  const [addUser, { error }] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -29,20 +28,20 @@ const SignupForm = () => {
 
     try {
       console.log('Sending signup request to server...');
-
+    
       const { data } = await addUser({
         variables: userFormData, // Pass the userFormData to the mutation
       });
-
-      console.log('Status?');
+    
+      console.log('Response data:');
       console.log(data); // Log the response data
-      console.log(error); // Log the error object if present
-
+    
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error('Signup error:', err);
       setShowAlert(true);
     }
+    
 
     setUserFormData({
       username: '',
@@ -55,7 +54,7 @@ const SignupForm = () => {
     <>
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
+        {/* Show alert if server response is bad */}
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your signup!
         </Alert>
