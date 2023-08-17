@@ -14,7 +14,6 @@ Data and user demands: these two factors drive almost all modern websites! User 
 This app targets readers and their abilty to access books in which they are interested, review them and save them to a list of books they would like to purchase.
 
 
-
 &nbsp;
 
 ## Table of Contents
@@ -30,11 +29,7 @@ This app targets readers and their abilty to access books in which they are inte
 
 ## Installation
 
-There are several steps
-
-* [Node.js Installation](https://nodejs.org/en)
-
-* [NPM Installation](https://docs.npmjs.com/cli/v8/commands/npm-install)
+To be added
 
 &nbsp;
 
@@ -44,7 +39,7 @@ There are several steps
 
 ## Usage
 
-several steps
+To be added
 
 &nbsp;
 
@@ -56,9 +51,8 @@ several steps
 _A brief overview of the project build_
 &nbsp;
 
-## Media
 
-![Media](./develop/graphics/testing)
+![Media](./Assets/media.png)
 
 * Visit [Full Media](https://drive.google.com/file/d/1RP5O_m4o5pA8fouVVtnfsFCCwfmUrG7Y/view) to see more details
 
@@ -70,20 +64,7 @@ _A brief overview of the project build_
 
 ## Testing
 
-Postman or Insomnia
-
-&nbsp;
-
-[Table of Contents](#table-of-contents)
-
-
-
-## Contribution
-
-
-
-* [Original Source code](https://github.com/coding-boot-camp/potential-enigma)
-* [Guideline to Professional README](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide)
+Sandbox
 
 &nbsp;
 
