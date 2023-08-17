@@ -54,7 +54,7 @@ _A brief overview of the project build_
 
 ![Media](./client/src/media/media.png)
 
-* Visit [Full Media](https://drive.google.com/file/d/1RP5O_m4o5pA8fouVVtnfsFCCwfmUrG7Y/view) to see more details
+* Visit [Full Media]() (Heroku link to be added)
 
 &nbsp;
 
